@@ -3,6 +3,7 @@ import {BrowserRouter as Router ,Navigate,Route,Routes} from 'react-router-dom';
 import MasterLayout from './layouts/MasterLayout';
 import Login from './components/Login';
 import Register from './components/Register';
+import Chat from './components/Chat';
 import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:8000/"
 axios.defaults.headers.post["Content-Type"] = 'application/json'
@@ -23,6 +24,7 @@ function App() {
           <Route exact path='/' element={<MasterLayout/>}/>
           <Route path="/login" element={localStorage.getItem("auth_token") ? <Navigate to="/" /> : <Login/>}></Route>
           <Route path="/register" element={localStorage.getItem("auth_token") ? <Navigate to="/" /> : <Register/>}></Route>
+          <Route path="/chat" element={localStorage.getItem("auth_token") ? <Chat/> : <Navigate to="/login" />}></Route>
           </Routes>
         </Router>
     </div>
