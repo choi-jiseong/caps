@@ -1,4 +1,4 @@
-import MasterLayout from '../layouts/MasterLayout';
+import MasterLayout from '../../layouts/MasterLayout';
 
 function Chat() {
     return (

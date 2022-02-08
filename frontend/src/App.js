@@ -3,7 +3,7 @@ import {BrowserRouter as Router ,Navigate,Route,Routes} from 'react-router-dom';
 import MasterLayout from './layouts/MasterLayout';
 import Login from './components/Login';
 import Register from './components/Register';
-import Chat from './components/Chat';
+import Chat from './components/Chat/Chat';
 import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:8000/"
 axios.defaults.headers.post["Content-Type"] = 'application/json'
