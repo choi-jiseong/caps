@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router ,Navigate,Route,Routes} from 'react-router-dom';
+import {BrowserRouter as Router ,Link,Route,Switch} from 'react-router-dom';
 import MasterLayout from './layouts/MasterLayout';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -20,12 +20,12 @@ function App() {
   return (
     <div className="App">
         <Router>
-          <Routes>
-          <Route exact path='/' element={<MasterLayout/>}/>
-          <Route path="/login" element={localStorage.getItem("auth_token") ? <Navigate to="/" /> : <Login/>}></Route>
-          <Route path="/register" element={localStorage.getItem("auth_token") ? <Navigate to="/" /> : <Register/>}></Route>
-          <Route path="/chat" element={localStorage.getItem("auth_token") ? <Chat/> : <Navigate to="/login" />}></Route>
-          </Routes>
+          <Switch>
+          <Route exact path='/' >{<MasterLayout/>}</Route>
+          <Route path="/login" >{localStorage.getItem("auth_token") ? <Link to="/" /> : <Login/>}</Route>
+          <Route path="/register" >{localStorage.getItem("auth_token") ? <Link to="/" /> : <Register/>}</Route>
+          <Route path="/chat" >{localStorage.getItem("auth_token") ? <Chat/> : <Link to="/login" />}</Route>
+          </Switch>
         </Router>
     </div>
   );

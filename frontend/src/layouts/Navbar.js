@@ -18,7 +18,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import axios from 'axios';
 import swal from 'sweetalert';
 import Swal from 'sweetalert2';
-import {useNavigate} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -60,7 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
- const navigate  = useNavigate();
+ const navigate  = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 

@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios'
 import Swal from 'sweetalert2'
-import {useNavigate} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -32,7 +32,7 @@ const theme = createTheme();
 
 export default function SignInSide() {
 
-  const navigate  = useNavigate();
+  const navigate  = useHistory();
   const [errMsg,getError] = useState({
     error_list: [],
   });
@@ -54,15 +54,15 @@ export default function SignInSide() {
 
     axios.get('/sanctum/csrf-cookie').then(response=> {
         axios.post('/api/login', data).then(res=> {
-            if(res.data.status == 200) {
+            if(res.data.status === 200) {
                 localStorage.setItem('auth_token',res.data.token);
                 localStorage.setItem('auth_name', res.data.username);
                 Toast.fire({
                     icon: 'success',
                     title: res.data.message
                   })
-                navigate('/');
-            } else if(res.data.status == 401) {
+                navigate.push('/');
+            } else if(res.data.status === 401) {
                 Swal.fire("error",res.data.message,"error");
             } else {
                 getError({...errMsg,error_list: res.data.error});
